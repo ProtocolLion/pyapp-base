@@ -1,0 +1,5 @@
+site_name: App ドキュメント
+nav:
+  - ホーム: index.md
+site_dir: build
+docs_dir: source
