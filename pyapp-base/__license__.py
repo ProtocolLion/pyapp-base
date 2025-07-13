@@ -2,20 +2,53 @@
 # -*- coding: utf-8 -*-
 """
 __license__.py
-ライセンス情報モジュール
+
+ライセンス情報管理モジュール。
+
+このモジュールは、パッケージのライセンス情報を管理し、
+MIT ライセンスの全文を提供します。
+
+機能:
+    - ライセンステキストの提供
+    - 著作権情報の動的生成
+    - ライセンス情報の表示
+
+使用例:
+    # コンソール出力
+    from __license__ import print_license, print_copyright
+    print_license()
+    print_copyright()
+    # string取得
+    from __license__ import get_license, get_copyright_info
+    str_license      = get_license()
+    str_license_info = get_copyright_info()
 """
 
+# =============================================================================
+# インポート
+# =============================================================================
 from datetime import datetime
 
-AD_START = 2025
-AD_END   = datetime.now().year
-AD       = f'{AD_START}-{AD_END}' if AD_START != AD_END else str(AD_START)
-AUTHOR   = 'ProtocolLion'
 
+# =============================================================================
+# ライセンス情報
+# =============================================================================
+COPYRIGHT_START_YEAR = 2025
+COPYRIGHT_END_YEAR = datetime.now().year
+COPYRIGHT_YEARS = (
+    f'{COPYRIGHT_START_YEAR}-{COPYRIGHT_END_YEAR}' 
+    if COPYRIGHT_START_YEAR != COPYRIGHT_END_YEAR 
+    else str(COPYRIGHT_START_YEAR)
+)
+
+# 著作権者情報
+COPYRIGHT_HOLDER = 'ProtocolLion'
+
+# ライセンス全文
 __license__ = (
     'MIT License\n'
     '\n'
-    f'Copyright (c) [{AD}] [{AUTHOR}]\n'
+    f'Copyright (c) {COPYRIGHT_YEARS} {COPYRIGHT_HOLDER}\n'
     '\n'
     'Permission is hereby granted, free of charge, to any person obtaining a copy\n'
     'of this software and associated documentation files (the "Software"), to deal\n'
@@ -36,11 +69,42 @@ __license__ = (
     'SOFTWARE.\n'
 )
 
-def license():
+
+# =============================================================================
+# ライセンス生成関数
+# =============================================================================
+def get_license() -> str:
     """
-    Returns the license text of the package.
+    パッケージのライセンステキストを取得します。
+    
+    Returns:
+        str: MITライセンスの全文
     """
     return __license__
 
+
+def get_copyright_info() -> str:
+    """
+    著作権情報を取得します。
+    
+    Returns:
+        str: 著作権情報
+    """
+    return f"Copyright (c) {COPYRIGHT_YEARS} {COPYRIGHT_HOLDER}"
+
+
+def print_license() -> None:
+    """ライセンス情報をコンソールに出力します。"""
+    print(get_license(), end='')
+
+
+def print_copyright() -> None:
+    """著作権情報をコンソールに出力します。"""
+    print(get_copyright_info())
+
+
+# =============================================================================
+# スクリプト実行時の処理
+# =============================================================================
 if __name__ == "__main__":
-    print(license(), end='')
+    print_license()

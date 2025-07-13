@@ -1,20 +1,24 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-body.py
-メインエントリポイントモジュール
+main.py
+
+アプリケーションのメインエントリーポイントモジュール。
+
+このモジュールは、アプリケーションの主要な実行フローを制御し、
+各種モジュールを組み合わせてアプリケーション全体の動作を実現します。
 """
 
-#---------------------------------
+# =============================================================================
 # インポート
-#---------------------------------
-# standard library
+# =============================================================================
+# 標準ライブラリ
 
 
-# third party library
+# サードパーティライブラリ
 
 
-# local library
+# ローカルライブラリ
 from .__version__ import __version_info__
 from . import app_argparser
 from . import app_config
@@ -25,18 +29,36 @@ from . import app_validation
 
 from . import utils
 
-#---------------------------------
-# main
-#---------------------------------
+
+# =============================================================================
+# メイン処理
+# =============================================================================
 def main():
-    """Main function for the body module."""
-    print(f"Application version: {__version_info__}")
-    utils.util0_test()  # Call a sample utility function
-    print("Application started successfully.")
+    """
+    アプリケーションのメイン関数。
+    
+    アプリケーションの初期化から終了まで、全体的な処理フローを管理します。
+    
+    Returns:
+        int: 終了コード（0: 正常終了, 1以上: エラー終了）
+    """
+    try:
+        print(f"Application version: {__version_info__}")
+        
+        # サンプルユーティリティ関数の呼び出し
+        utils.util0_test()
+        
+        print("Application started successfully.")
+        return 0
+        
+    except Exception as e:
+        print(f"Application error: {e}")
+        return 1
 
 
-#---------------------------------
-# if __name__ == "__main__":
-#---------------------------------
+# =============================================================================
+# スクリプト実行時の処理
+# =============================================================================
 if __name__ == "__main__":
-    main()
+    exit_code = main()
+    exit(exit_code)
