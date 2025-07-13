@@ -2,6 +2,6 @@
 
 export PYTHONPATH="../"
 
-appname="app"
+appname="pyapp-base"
 
-python -B -m ${appname}
+python3 -B -m ${appname}

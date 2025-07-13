@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 app_const.py
@@ -46,12 +46,8 @@ DEFAULT_LOG_FILE = f'{APP_NAME_SHORT.lower()}.log'
 # app
 #---------------------------------
 # 処理関連
-class AppProcessMode(Enum):
-    BATCH = 'batch'
-    INTERACTIVE = 'interactive'
-    DAEMON = 'daemon'
+class AppEnum(Enum):
+    RED = (255, 0, 0)
+    GREEN = (0, 255, 0)
+    BLUE = (0, 0, 255)
 
-class AppOutputFormat(Enum):
-    JSON = 'json'
-    CSV = 'csv'
-    YAML = 'yaml'
